@@ -185,6 +185,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f98a04dce437184842841303488f70d0188c5f51437d2a834dc097eafa909a01"
 
 [[package]]
+name = "maze_bench_rs"
+version = "0.1.0"
+dependencies = [
+ "array2d",
+ "image",
+]
+
+[[package]]
 name = "memoffset"
 version = "0.6.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -210,14 +218,6 @@ checksum = "a92518e98c078586bc6c934028adcca4c92a53d6a958196de835170a01d84e4b"
 dependencies = [
  "adler",
  "autocfg",
-]
-
-[[package]]
-name = "my_rust_project"
-version = "0.1.0"
-dependencies = [
- "array2d",
- "image",
 ]
 
 [[package]]
