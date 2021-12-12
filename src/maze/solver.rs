@@ -15,7 +15,7 @@ pub fn is_reachable(maze: &Array2D<bool>, start: &Point, end: &Point) -> bool {
     let mut visited = Array2D::new(false, width, height);
     visited.set(start.x, start.y, true);
 
-    let mut stack: Vec<Point> = vec![];
+    let mut stack: Vec<Point> = Vec::with_capacity(width);
     let mut p: Point = *start;
     loop {
         let x = p.x;
