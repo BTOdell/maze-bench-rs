@@ -1,7 +1,7 @@
 use std::time::Instant;
-use array2d::Array2D;
-use image::{GenericImageView, Pixel};
+use image::GenericImageView;
 
+use self::maze::array2d::Array2D;
 use self::maze::solver::Point;
 
 mod maze;
@@ -18,11 +18,11 @@ fn main() {
     // Process image into maze boolean array
     println!("Transforming image into maze...");
     let now = Instant::now();
-    let mut maze = Array2D::filled_with(false, img.width() as usize, img.height() as usize);
+    let mut maze = Array2D::new(false, img.width() as usize, img.height() as usize);
     for (x, y, color) in img.pixels() {
-        let rgb = color.to_rgb().0;
-        let filled = rgb[0] > 0 || rgb[1] > 0 || rgb[2] > 0;
-        maze.set(x as usize, y as usize, filled).unwrap();
+        let rgba = color.0;
+        let filled = (rgba[0] + rgba[1] + rgba[2]) > 0;
+        maze.set(x as usize, y as usize, filled);
     }
     println!("Transformed image into maze in {}ns", now.elapsed().as_nanos());
     let start: Point = Point {
